@@ -1,10 +1,9 @@
 <?php
-// Koneksi ke MySQL (phpMyAdmin). Default XAMPP: user root, password kosong.
-// Untuk server beneran, buat user khusus yang hanya punya akses ke database choco_cloud.
+// Koneksi ke MySQL server VPS
 const DB_HOST = 'localhost';
 const DB_NAME = 'choco_cloud';
-const DB_USER = 'root';
-const DB_PASS = '';
+const DB_USER = 'admin_toko';
+const DB_PASS = 'PasswordKamu123'; // Ubah dengan password database Anda
 
 function db(): PDO {
     static $pdo = null;
