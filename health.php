@@ -1,15 +1,12 @@
 <?php
-// Mengambil konfigurasi database
 require_once 'config.php';
 
-// Cek koneksi ke database MySQL
-if ($conn->connect_error) {
-    // Jika database bermasalah, kirim status error 500
-    http_response_code(500);
-    echo "ERROR: Database connection failed";
-} else {
-    // Jika semua normal, tampilkan OK sesuai instruksi dosen
+// Memeriksa status kesehatan koneksi database
+if (isset($conn) && !$conn->connect_error) {
     http_response_code(200);
     echo "OK";
+} else {
+    http_response_code(500);
+    echo "ERROR: Database connection unstable";
 }
 ?>

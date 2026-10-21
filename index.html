@@ -134,15 +134,19 @@ $('kirim').addEventListener('click',function(){
  er.hidden=true;var btn=$('kirim');btn.disabled=true;btn.textContent='Mengirim…';
  
  // Menembus endpoint API Node.js backend
- fetch('/api/order',{
-  method:'POST',
-  headers:{'Content-Type':'application/json'},
-  body:JSON.stringify({nama:n,wa:w,tgl:g,catatan:$('cat').value.trim(),items:items.join(', '),total:totalHarga})
+  fetch('order.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: 'nama=' + encodeURIComponent(n) + 
+        '&wa=' + encodeURIComponent(w) + 
+        '&tgl=' + encodeURIComponent(g) + 
+        '&catatan=' + encodeURIComponent($('cat').value.trim()) + 
+        '&total=' + encodeURIComponent(totalHarga)
  })
  .then(function(r){return r.json()})
  .then(function(d){
-  if(!d.ok)throw new Error(d.error||'Gagal');
-  $('doneMsg').textContent='Pesanan sukses dicatat dengan ID #'+d.order_id+', total '+rp(totalHarga)+'. Data Anda aman tersimpan di Database Cloud Kelompok 6.';
+  if(d.status !== 'success') throw new Error(d.message||'Gagal');
+  $('doneMsg').textContent='Pesanan sukses dicatat! ' + d.message + ' Total ' + rp(totalHarga) + '. Data Anda aman terenkripsi di server Cloud Kelompok 6.';
   $('formBox').hidden=true;$('done').hidden=false;
   cart={};['nama','wa','tgl','cat'].forEach(function(i){$(i).value=''});renderMenu();renderCart();
  })
