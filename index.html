@@ -1,169 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CHOCO CLOUD – Pre-Order Brownies</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FAF6F7;--surface:#fff;--ink:#2B1A17;--muted:#7a6561;--line:#e8dcdc;--accent:#1A237E;--accent-ink:#fff;--sage:#8F5050;--cocoa:#3a211d;--cocoa-ink:#fbeeee;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a100e;--surface:#27181a;--ink:#f6e9e7;--muted:#b39b97;--line:#412b2c;--accent:#8b95ee;--accent-ink:#10122e;--sage:#cf9599;--cocoa:#120a09;--cocoa-ink:#f6e9e7}}
-:root[data-theme="dark"]{--bg:#1a100e;--surface:#27181a;--ink:#f6e9e7;--muted:#b39b97;--line:#412b2c;--accent:#8b95ee;--accent-ink:#10122e;--sage:#cf9599;--cocoa:#120a09;--cocoa-ink:#f6e9e7}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;line-height:1.5}
-h1,h2,h3{font-family:'Bricolage Grotesque',Georgia,serif;margin:0;line-height:1.1}
-.hero{background:var(--cocoa);color:var(--cocoa-ink);padding:36px 20px 28px;text-align:left}
-.wrap{max-width:980px;margin:0 auto}
-.hero h1{font-size:clamp(2.4rem,9vw,4.2rem);font-weight:800;letter-spacing:-.02em}
-.brand{display:flex;align-items:center;gap:18px}.logo{width:96px;height:96px;object-fit:contain;background:#fff;border-radius:18px;padding:6px;flex:none}@media(max-width:480px){.logo{width:72px;height:72px}}
-.hero p{max-width:46ch;margin:12px 0 0;opacity:.85}
-nav{display:flex;gap:6px;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--line);overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
-nav button{border:0;background:none;color:var(--muted);font:600 .95rem Figtree,sans-serif;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
-nav button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
-nav button:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
-main{padding:24px 20px 60px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-top:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
-.card .em{font-size:2rem}
-.price{font-weight:600;color:var(--accent)}
-.muted{color:var(--muted);font-size:.9rem}
-.btn{border:0;background:var(--accent);color:var(--accent-ink);font:600 .95rem Figtree,sans-serif;padding:10px 16px;border-radius:10px;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.qty{display:flex;align-items:center;gap:10px;margin-top:auto}
-.qty button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer}
-.layout{display:grid;grid-template-columns:1fr;gap:24px}
-@media(min-width:860px){.layout{grid-template-columns:1fr 320px;align-items:start}.cart{position:sticky;top:70px}}
-.cart{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
-.cart .row{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
-.cart .total{display:flex;justify-content:space-between;font-weight:600;margin:12px 0;font-size:1.1rem}
-label{display:block;font-size:.85rem;font-weight:600;margin:10px 0 4px}
-input,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
-.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin:10px 0 28px}
-table{border-collapse:collapse;width:100%;font-size:.88rem}
-th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
-th{background:var(--bg);color:var(--muted);font-weight:600}
-.tname{display:block}.tname+.badge{margin-top:6px}.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:600;background:var(--sage);color:var(--bg)}
-.badge.wait{background:var(--accent);color:var(--accent-ink)}
-.note{background:var(--surface);border-left:4px solid var(--sage);padding:12px 16px;border-radius:0 10px 10px 0;margin:12px 0}
-.empty{padding:28px;text-align:center;color:var(--muted)}
-footer{text-align:center;padding:24px 20px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
-[hidden]{display:none!important}
-
-.done{text-align:center;padding:8px 0}.done h3{margin-bottom:8px}
-.stok{font-size:.8rem;color:var(--sage)}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choco Cloud – Brownies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="hero"><div class="wrap">
-<div class="brand"><img class="logo" src="logo.png" alt="Logo Choco Cloud" width="96" height="96"><div><h1>CHOCO CLOUD</h1>
-<p>Brownies lumer premium, dipanggang setelah kamu pesan. Pilih rasa, tentukan tanggal ambil, selesai.</p></div></div>
-</div></header>
-<main><div class="wrap">
-<div class="layout">
-<section>
-<h2>Menu terlaris</h2>
-<div class="grid" id="menuGrid"></div>
-</section>
-<aside class="cart" aria-live="polite">
-<div id="formBox">
-<h3>Keranjang</h3>
-<div id="cartRows"></div>
-<div class="total"><span>Total</span><span id="total">Rp 0</span></div>
-<label for="nama">Nama</label><input id="nama" autocomplete="name" maxlength="100">
-<label for="wa">Nomor WhatsApp</label><input id="wa" inputmode="tel" autocomplete="tel" maxlength="20">
-<label for="tgl">Tanggal ambil</label><input id="tgl" type="date">
-<label for="cat">Catatan</label><textarea id="cat" rows="2" maxlength="300"></textarea>
-<p id="err" style="color:var(--accent);font-size:.9rem" hidden></p>
-<button class="btn" style="width:100%;margin-top:12px" id="kirim">Kirim pesanan</button>
-</div>
-<div id="done" class="done" hidden>
-<h3>Pesanan diterima</h3>
-<p id="doneMsg"></p>
-<button class="btn ghost" id="again">Pesan lagi</button>
-</div>
-</aside>
-</div>
-</div></main>
-<footer><b>Kelompok 6 – Praktikum Cloud Computing</b><br>Annisaa Gladiola Duryat (Cloud Architect) · Nabila & Rayza Aditya Ilham (Infrastructure Engineer) · Siti Naylani Safitri (Security & Governance Officer) · Matius Rusdin Halawa (Cost & Operations Analyst)</footer>
 
-<script>
-var FALLBACK=[
-{id:1,nama:'Fudgy Chocolate',harga:45000,emoji:'🍫',deskripsi:'Lumer, cokelat pekat.',stok:99},
-{id:2,nama:'Almond Crunch',harga:50000,emoji:'🌰',deskripsi:'Topping almond panggang.',stok:99},
-{id:3,nama:'Cheese Supreme',harga:55000,emoji:'🧀',deskripsi:'Keju gurih di atas cokelat.',stok:99},
-{id:4,nama:'Lotus Biscoff',harga:58000,emoji:'🍪',deskripsi:'Saus dan remahan Biscoff.',stok:99},
-{id:5,nama:'Matcha Delight',harga:52000,emoji:'🍵',deskripsi:'Matcha dengan white chocolate.',stok:99}];
-var MENU=[],cart={};
-function $(i){return document.getElementById(i)}
-function rp(n){return 'Rp '+Number(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
-function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'\''}[c]})}
+  <header class="site-header">
+    <a href="#beranda" class="logo-link" aria-label="Choco Cloud"><img src="logo.png" alt="Choco Cloud"></a>
+    <nav>
+      <a href="#beranda">Beranda</a>
+      <a href="#menu">Menu</a>
+      <a href="#lokasi">Lokasi</a>
+      <a href="#tim">Tim</a>
+    </nav>
+  </header>
 
-function renderMenu(){
- $('menuGrid').innerHTML=MENU.map(function(m){
-  return '<div class="card"><div class="em">'+esc(m.emoji||'🍫')+'</div><h3>'+esc(m.nama)+'</h3><div class="muted">'+esc(m.deskripsi||'')+'</div><div class="price">'+rp(m.harga)+'</div>'+(m.stok<=5?'<div class="stok">Sisa '+m.stok+'</div>':'')+'<div class="qty"><button aria-label="Kurangi '+esc(m.nama)+'" data-m="'+m.id+'" data-d="-1">−</button><span id="q'+m.id+'">'+(cart[m.id]||0)+'</span><button aria-label="Tambah '+esc(m.nama)+'" data-m="'+m.id+'" data-d="1">+</button></div></div>'}).join('');
-}
-function renderCart(){
- var t=0,h='';
- MENU.forEach(function(m){var q=cart[m.id]||0;if(q){t+=q*m.harga;h+='<div class="row"><span>'+q+'× '+esc(m.nama)+'</span><span>'+rp(q*m.harga)+'</span></div>'}});
- $('cartRows').innerHTML=h||'<div class="empty">Belum ada brownies dipilih.</div>';
- $('total').textContent=rp(t);
-}
-document.addEventListener('click',function(e){
- var b=e.target.closest('button[data-m]');
- if(!b)return;
- var id=+b.dataset.m,d=+b.dataset.d,m=MENU.find(function(x){return x.id===id});
- cart[id]=Math.min(m.stok,Math.max(0,(cart[id]||0)+d));
- $('q'+id).textContent=cart[id];renderCart();
-});
+  <main>
+    <section id="beranda" class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">Brownies Choco Cloud</span>
+        <h1>Brownies cokelat, lima pilihan rasa.</h1>
+        <p>Choco Cloud menyajikan brownies dengan topping favorit, mulai dari Fudgy Chocolate yang lumer sampai Matcha Delight dengan white chocolate.</p>
+        <a href="#lokasi" class="btn">Kunjungi Store Kami</a>
+      </div>
+      <div class="hero-logo"><img src="logo.png" alt="Logo Choco Cloud"></div>
+    </section>
 
-// FIXED: Mengirim data ke server Node.js kelompok
-$('kirim').addEventListener('click',function(){
- var items=[];
- var totalHarga=0;
- MENU.forEach(function(m){
-  if(cart[m.id]){
-   items.push(cart[m.id]+'x '+m.nama);
-   totalHarga+=(cart[m.id]*m.harga);
-  }
- });
- var n=$('nama').value.trim(),w=$('wa').value.trim(),g=$('tgl').value,er=$('err');
- var msg=!items.length?'Pilih minimal satu brownies.':!n?'Isi nama kamu.':!w?'Isi nomor WhatsApp supaya kami bisa konfirmasi.':!g?'Pilih tanggal ambil.':'';
- if(msg){er.textContent=msg;er.hidden=false;return}
- er.hidden=true;var btn=$('kirim');btn.disabled=true;btn.textContent='Mengirim…';
- 
- // Menembus endpoint API Node.js backend
-  fetch('order.php', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  body: 'nama=' + encodeURIComponent(n) + 
-        '&wa=' + encodeURIComponent(w) + 
-        '&tgl=' + encodeURIComponent(g) + 
-        '&catatan=' + encodeURIComponent($('cat').value.trim()) + 
-        '&total=' + encodeURIComponent(totalHarga)
- })
- .then(function(r){return r.json()})
- .then(function(d){
-  if(d.status !== 'success') throw new Error(d.message||'Gagal');
-  $('doneMsg').textContent='Pesanan sukses dicatat! ' + d.message + ' Total ' + rp(totalHarga) + '. Data Anda aman terenkripsi di server Cloud Kelompok 6.';
-  $('formBox').hidden=true;$('done').hidden=false;
-  cart={};['nama','wa','tgl','cat'].forEach(function(i){$(i).value=''});renderMenu();renderCart();
- })
- .catch(function(e){er.textContent='Gagal tersambung ke database server. Pastikan server aktif.';er.hidden=false})
- .then(function(){btn.disabled=false;btn.textContent='Kirim pesanan'});
-});
+    <section id="menu" class="section">
+      <h2>Menu Terlaris</h2>
+      <div class="grid">
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 200 150" aria-hidden="true">
+            <ellipse cx="100" cy="128" rx="82" ry="9" fill="#000" opacity=".12"/>
+            <polygon points="30,85 150,85 150,114 30,114" fill="#3A1F12"/>
+            <polygon points="150,85 168,50 168,79 150,114" fill="#2A150B"/>
+            <polygon points="46,50 168,50 150,85 30,85" fill="#5A2E1A"/>
+            <ellipse cx="70" cy="64" rx="22" ry="4" fill="#fff" opacity=".25"/><path d="M62 78 Q100 62 140 74" stroke="#2A150B" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Fudgy Chocolate</h3>
+          <p>Lumer, cokelat pekat.</p>
+          <strong class="price">Rp 45.000</strong>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 200 150" aria-hidden="true">
+            <ellipse cx="100" cy="128" rx="82" ry="9" fill="#000" opacity=".12"/>
+            <polygon points="30,85 150,85 150,114 30,114" fill="#3A1F12"/>
+            <polygon points="150,85 168,50 168,79 150,114" fill="#2A150B"/>
+            <polygon points="46,50 168,50 150,85 30,85" fill="#6B3A22"/>
+            <ellipse cx="70" cy="62" rx="9" ry="5" fill="#D9A86C" stroke="#A9743A" stroke-width="1.5" transform="rotate(-20 70 62)"/><ellipse cx="98" cy="58" rx="9" ry="5" fill="#D9A86C" stroke="#A9743A" stroke-width="1.5" transform="rotate(15 98 58)"/><ellipse cx="126" cy="62" rx="9" ry="5" fill="#D9A86C" stroke="#A9743A" stroke-width="1.5" transform="rotate(-10 126 62)"/><ellipse cx="84" cy="76" rx="9" ry="5" fill="#D9A86C" stroke="#A9743A" stroke-width="1.5" transform="rotate(25 84 76)"/><ellipse cx="114" cy="75" rx="9" ry="5" fill="#D9A86C" stroke="#A9743A" stroke-width="1.5" transform="rotate(-25 114 75)"/><ellipse cx="142" cy="70" rx="9" ry="5" fill="#D9A86C" stroke="#A9743A" stroke-width="1.5" transform="rotate(10 142 70)"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Almond Crunch</h3>
+          <p>Topping almond panggang.</p>
+          <strong class="price">Rp 50.000</strong>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 200 150" aria-hidden="true">
+            <ellipse cx="100" cy="128" rx="82" ry="9" fill="#000" opacity=".12"/>
+            <polygon points="30,85 150,85 150,114 30,114" fill="#3A1F12"/>
+            <polygon points="150,85 168,50 168,79 150,114" fill="#2A150B"/>
+            <polygon points="46,50 168,50 150,85 30,85" fill="#5A2E1A"/>
+            <path d="M40 74 Q60 56 90 62 T150 58 L142 82 L34 82 Z" fill="#F2CF6A"/><circle cx="70" cy="70" r="3" fill="#D9A93A"/><circle cx="104" cy="68" r="2.5" fill="#D9A93A"/><circle cx="126" cy="72" r="3" fill="#D9A93A"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Cheese Supreme</h3>
+          <p>Keju gurih di atas cokelat.</p>
+          <strong class="price">Rp 55.000</strong>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 200 150" aria-hidden="true">
+            <ellipse cx="100" cy="128" rx="82" ry="9" fill="#000" opacity=".12"/>
+            <polygon points="30,85 150,85 150,114 30,114" fill="#3A1F12"/>
+            <polygon points="150,85 168,50 168,79 150,114" fill="#2A150B"/>
+            <polygon points="46,50 168,50 150,85 30,85" fill="#5A2E1A"/>
+            <path d="M52 76 L72 58 L92 76 L112 58 L132 76 L150 62" stroke="#C27A2C" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/><rect x="100" y="48" width="34" height="14" rx="3" fill="#C98B4A" stroke="#8F5A24" stroke-width="2" transform="rotate(-12 117 55)"/><circle cx="66" cy="66" r="3" fill="#D9A86C"/><circle cx="86" cy="70" r="2.5" fill="#D9A86C"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Lotus Biscoff</h3>
+          <p>Saus dan remahan Biscoff.</p>
+          <strong class="price">Rp 58.000</strong>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <svg viewBox="0 0 200 150" aria-hidden="true">
+            <ellipse cx="100" cy="128" rx="82" ry="9" fill="#000" opacity=".12"/>
+            <polygon points="30,85 150,85 150,114 30,114" fill="#3A1F12"/>
+            <polygon points="150,85 168,50 168,79 150,114" fill="#2A150B"/>
+            <polygon points="46,50 168,50 150,85 30,85" fill="#8DA66A"/>
+            <path d="M50 62 Q70 74 90 62 T130 62 T160 58" stroke="#FFF6E5" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M42 78 Q70 66 100 78 T146 74" stroke="#FFF6E5" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Matcha Delight</h3>
+          <p>Matcha dengan white chocolate.</p>
+          <strong class="price">Rp 52.000</strong>
+        </div>
+      </article>
+      </div>
+    </section>
 
-$('again').addEventListener('click',function(){$('done').hidden=true;$('formBox').hidden=false;loadMenu()});
+    <section id="lokasi" class="section store-wrap">
+      <div class="store">
+        <div>
+          <h2>Pesan Langsung di Store</h2>
+          <p>Pemesanan dilakukan langsung di store kami. Silakan datang, pilih brownies favoritmu, dan bawa pulang.</p>
+        </div>
+        <ul>
+          <li><strong>Lokasi</strong><br>[Alamat lengkap store], [Kota]</li>
+          <li><strong>Jam buka</strong><br>[Hari dan jam buka]</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-// FIXED: Menarik data menu dari API Node.js backend
-function loadMenu(){
- fetch('/api/menu').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){MENU=d.menu})
- .catch(function(){MENU=FALLBACK})
- .then(function(){renderMenu();renderCart()});
-}
-(function(){var d=new Date();d.setDate(d.getDate()+2);$('tgl').min=d.toISOString().slice(0,10)})();
-loadMenu();
-</script>
+  <footer id="tim" class="site-footer">
+    <strong>Kelompok 6 – Praktikum Cloud Computing</strong>
+    <span>Annisa Gladiola Duryat (Cloud Architect) · Nabila &amp; Rayza Aditya Ilham (Infrastructure Engineer) · Siti Naylani Safitri (Security &amp; Governance Officer) · Matius Rusdin Halawa (Cost &amp; Operations Analyst)</span>
+  </footer>
+
 </body>
 </html>

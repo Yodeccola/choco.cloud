@@ -1,44 +1,48 @@
 # Choco Cloud
 
-> Choco Cloud adalah aplikasi sistem pemesanan menu dan manajemen toko kue berbasis web.
+Web statis UMKM brownies **Choco Cloud**, tugas UTS Cloud Computing – **Kelompok 6**.
 
-## ✨ Fitur Utama
-- Desain responsif (*mobile-friendly*)
-- Pengolahan logika server-side menggunakan PHP
-- Interaktivitas antarmuka dengan JavaScript murni (Vanilla JS)
-- Tampilan antarmuka modern dengan CSS kustom
+- Halaman utama: nama, deskripsi, 5 menu beserta harga, info store, dan footer anggota kelompok.
+- `/health` menampilkan teks `OK`.
+- Tanpa database.
 
-## 🛠️ Teknologi yang Digunakan
-- **PHP** - Bahasa pemrograman server-side
-- **HTML5** - Struktur halaman web
-- **CSS3** - Desain dan tata letak (*styling*)
-- **JavaScript (ES6+)** - Interaktivitas *client-side*
-- **MySQL** - Database (menggunakan file `database.sql`)
+## Struktur
 
-## 🚀 Cara Upload & Deployment (IDCloudhost)
+```
+server.js        # server Express (static + /health)
+package.json
+public/
+  index.html
+  style.css
+  logo.png
+```
 
-Karena proyek ini akan di-upload ke IDCloudhost, ikuti langkah-langkah berikut:
+## Cara instalasi
 
-1. **Import Database**
-   * Login ke cPanel atau DirectAdmin hosting IDCloudhost Anda.
-   * Buka **phpMyAdmin**, lalu buat database baru.
-   * Pilih database tersebut, klik menu **Import**, lalu pilih file `database.sql` yang ada di dalam proyek ini untuk mengimpor tabel.
+Prasyarat: Node.js 18 atau lebih baru.
 
-2. **Konfigurasi Koneksi Database**
-   * Buka file `config.php` di proyek Anda.
-   * Sesuaikan informasi *host*, *username*, *password*, dan *nama database* dengan kredensial database yang baru saja Anda buat di cPanel/DirectAdmin IDCloudhost.
-
-3. **Upload File ke Hosting**
-   * Buka **File Manager** di cPanel/DirectAdmin.
-   * Masuk ke dalam folder `public_html`.
-   * Unggah (*Upload*) seluruh file proyek Anda ke dalam folder `public_html` (atau buat subfolder jika diperlukan).
-   * Jika Anda mengunggah dalam bentuk ZIP (`choco-cloud.zip`), klik kanan file ZIP tersebut lalu pilih **Extract**.
-
-4. **Akses Website**
-   * Buka browser dan ketikkan nama domain Anda untuk mulai menggunakan aplikasi.
-
-## 📥 Cara Clone untuk Pengembangan Lokal (Opsional)
-Jika Anda ingin mengedit kodenya kembali di komputer lokal:
 ```bash
-git clone [https://github.com/Yodeccola/choco.cloud.git](https://github.com/Yodeccola/choco.cloud.git)
+git clone https://github.com/Yodeccola/choco.cloud.git
 cd choco.cloud
+npm install
+npm start
+```
+
+Server berjalan di port 80 (ubah dengan `PORT=3000 npm start`).
+Buka `http://localhost:3000/` dan `http://localhost:3000/health`.
+
+## Menjalankan terus-menerus di server (opsional)
+
+```bash
+sudo npm install -g pm2
+sudo PORT=80 pm2 start server.js --name choco-cloud
+pm2 save && pm2 startup
+```
+
+## Anggota Kelompok 6
+
+- Annisa Gladiola Duryat – Cloud Architect
+- Nabila – Infrastructure Engineer
+- Rayza Aditya Ilham – Infrastructure Engineer
+- Siti Naylani Safitri – Security & Governance Officer
+- Matius Rusdin Halawa – Cost & Operations Analyst

@@ -1,0 +1,12 @@
+{
+  "name": "choco-cloud",
+  "version": "1.0.0",
+  "description": "Web statis Choco Cloud (brownies) - UTS Cloud Computing Kelompok 6",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
